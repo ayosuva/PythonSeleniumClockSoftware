@@ -1,4 +1,14 @@
 # PythonSeleniumClockSoftware
+It is a Selenium Python based test automation framework and the test scripts written for Clock Software site https://www.clock-software.com/demo-clockpms/index.html
+
+It has following features:
+
+-> Page object Model
+
+-> Pytest HTML Report 
+
+-> CI/CD configurable
+
 How to Run:
 
 Load the project in pycharm IDE
