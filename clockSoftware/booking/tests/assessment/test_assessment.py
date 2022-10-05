@@ -1,18 +1,17 @@
-
 import pytest
-from booking.src.pages.HomePage import HomePage
-from booking.src.pages.RoomPage import RoomPage
-from booking.src.pages.ExtrasPage import ExtrasPage
-from booking.src.pages.CheckoutPage import CheckoutPage
-from booking.src.pages.PaymentPage import PaymentPage
-from booking.src.pages.ConfirmationPage import ConfirmationPage
+from clockSoftware.booking.src.pages.HomePage import HomePage
+from clockSoftware.booking.src.pages.RoomPage import RoomPage
+from clockSoftware.booking.src.pages.ExtrasPage import ExtrasPage
+from clockSoftware.booking.src.pages.CheckoutPage import CheckoutPage
+from clockSoftware.booking.src.pages.PaymentPage import PaymentPage
+from clockSoftware.booking.src.pages.ConfirmationPage import ConfirmationPage
+
 
 @pytest.mark.usefixtures('init_driver')
 class TestAssessment:
 
     @pytest.mark.tcid01
     def test_assessment(self):
-
         home = HomePage(self.driver)
         room = RoomPage(self.driver)
         extras = ExtrasPage(self.driver)
@@ -32,7 +31,7 @@ class TestAssessment:
 
         home.click_book()
 
-        expected_arrival=room.click_most_expensive_option()
+        expected_arrival = room.click_most_expensive_option()
 
         extras.input_cleaning()
 
@@ -41,25 +40,25 @@ class TestAssessment:
         extras.click_add()
 
         arrival = checkout.arrival()
-        assert arrival == expected_arrival, 'Wrong'
+        assert arrival == expected_arrival, 'The arrival date is not shown as expected'
 
         stay = checkout.stay()
-        assert stay == str(nights), 'Wrong'
+        assert stay == str(nights), 'The number of stay is not shown as expected'
 
-        #departure = checkout.departure()
-        #assert departure == '14 Sep 2022', 'Wrong'
+        # departure = checkout.departure()
+        # assert departure == '14 Sep 2022', 'Wrong'
 
         type = checkout.type()
-        assert type == 'Deluxe Appartment', 'Wrong'
+        assert type == 'Deluxe Appartment', 'Room Type is not shown as expected'
 
         rate = checkout.rate()
-        assert rate == 'Rack Rate Standard Max +', 'Wrong'
+        assert rate == 'Rack Rate Standard Max +', 'Rate is not shown as expected'
 
         extra = checkout.extra()
-        assert extra == '6.00 EUR', 'Wrong'
+        assert extra == '6.00 EUR', 'Extra service charge is not shown as expected'
 
         total = checkout.total()
-        assert total == '1,656.00 EUR', 'Wrong'
+        assert total == '1,656.00 EUR', 'Total is not shown as expected'
 
         checkout.email()
 
@@ -104,4 +103,4 @@ class TestAssessment:
         payment.submit()
 
         confirmation = confirm.confirmation()
-        assert confirmation == 'Thank you for your booking!', 'Wrong'
+        assert confirmation == 'Thank you for your booking!', 'Confirmation message is not shown as expected'

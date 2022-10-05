@@ -1,10 +1,9 @@
 import datetime
-import time
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common import StaleElementReferenceException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from booking.src.helpers.ReusableFunctions import ReusableFunctions
+from clockSoftware.booking.src.helpers.ReusableFunctions import ReusableFunctions
 from selenium.webdriver.common.by import By
 
 

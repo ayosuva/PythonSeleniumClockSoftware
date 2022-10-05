@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 
-from booking.src.helpers.ReusableFunctions import ReusableFunctions
-from booking.src.helpers.generic_helpers import generate_random_email_and_password
-
+from clockSoftware.booking.src.helpers.ReusableFunctions import ReusableFunctions
+from clockSoftware.booking.src.helpers.generic_helpers import generate_random_email_and_password
+from clockSoftware.booking.src.pages.HomePage import HomePage
 
 class CheckoutPage:
     ARRIVAL = (By.XPATH, '//*[@id="top_position_container"]/div[3]/div[3]/div[1]/div[2]/div[1]/div[2]')
@@ -38,6 +38,7 @@ class CheckoutPage:
 
     def arrival(self):
         arrival = self.sl.wait_get_element(self.ARRIVAL).text
+        assert arrival ==  HomePage.entered_date, 'Wrong'
         return arrival
 
     def stay(self):

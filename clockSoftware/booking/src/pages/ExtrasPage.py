@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from booking.src.helpers.ReusableFunctions import ReusableFunctions
+from clockSoftware.booking.src.helpers.ReusableFunctions import ReusableFunctions
 
 class ExtrasPage:
 
