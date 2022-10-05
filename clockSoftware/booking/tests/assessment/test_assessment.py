@@ -6,12 +6,14 @@ from clockSoftware.booking.src.pages.CheckoutPage import CheckoutPage
 from clockSoftware.booking.src.pages.PaymentPage import PaymentPage
 from clockSoftware.booking.src.pages.ConfirmationPage import ConfirmationPage
 import datetime
-
+from clockSoftware.booking.src.helpers.BaseClass import  BaseClass
 @pytest.mark.usefixtures('init_driver')
-class TestAssessment:
+class TestAssessment(BaseClass):
 
     @pytest.mark.tcid01
     def test_assessment(self):
+        log=self.getLogger()
+        log.info("Test Log")
         home = HomePage(self.driver)
         room = RoomPage(self.driver)
         extras = ExtrasPage(self.driver)
@@ -60,7 +62,7 @@ class TestAssessment:
 
         total = checkout.total()
         assert total == '1,656.00 EUR', 'Total is not shown as expected'
-
+        log
         checkout.email()
 
         checkout.last_name()
