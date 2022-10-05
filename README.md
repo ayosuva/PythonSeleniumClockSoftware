@@ -18,3 +18,5 @@ you can using Run button that is show at the right hand side top or else you can
 ```python -m pytest```
 
 To generate html report install ```pytest-html``` using command ```pip install pytest-html``` and then using this command to run test to generate html report ```python -m pytest --html report.html``` 
+
+To include logs in the html report use command ```python -m pytest --html report.html --capture=tee-sys```
