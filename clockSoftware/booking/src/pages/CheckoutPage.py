@@ -38,7 +38,7 @@ class CheckoutPage:
 
     def arrival(self):
         arrival = self.sl.wait_get_element(self.ARRIVAL).text
-        assert arrival ==  HomePage.entered_date, 'Wrong'
+        #print(HomePage.entered_date) global variable example
         return arrival
 
     def stay(self):

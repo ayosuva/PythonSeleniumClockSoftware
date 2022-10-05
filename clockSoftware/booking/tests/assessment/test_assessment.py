@@ -5,7 +5,7 @@ from clockSoftware.booking.src.pages.ExtrasPage import ExtrasPage
 from clockSoftware.booking.src.pages.CheckoutPage import CheckoutPage
 from clockSoftware.booking.src.pages.PaymentPage import PaymentPage
 from clockSoftware.booking.src.pages.ConfirmationPage import ConfirmationPage
-
+import datetime
 
 @pytest.mark.usefixtures('init_driver')
 class TestAssessment:
@@ -39,23 +39,24 @@ class TestAssessment:
 
         extras.click_add()
 
-        arrival = checkout.arrival()
-        assert arrival == expected_arrival, 'The arrival date is not shown as expected'
+        arrival_date = checkout.arrival()
+        assert arrival_date == expected_arrival, 'The arrival date is not shown as expected'
 
         stay = checkout.stay()
         assert stay == str(nights), 'The number of stay is not shown as expected'
 
-        # departure = checkout.departure()
-        # assert departure == '14 Sep 2022', 'Wrong'
+        departure_date = checkout.departure()
+        assert departure_date == (datetime.datetime.strptime(expected_arrival, "%d %b %Y") + datetime.timedelta(
+                        days=4)).strftime('%d %b %Y'), 'The departure date is not shown as expected'
 
-        type = checkout.type()
-        assert type == 'Deluxe Appartment', 'Room Type is not shown as expected'
+        room_type = checkout.type()
+        assert room_type == 'Deluxe Appartment', 'Room Type is not shown as expected'
 
         rate = checkout.rate()
         assert rate == 'Rack Rate Standard Max +', 'Rate is not shown as expected'
 
-        extra = checkout.extra()
-        assert extra == '6.00 EUR', 'Extra service charge is not shown as expected'
+        extra_service_charge = checkout.extra()
+        assert extra_service_charge == '6.00 EUR', 'Extra service charge is not shown as expected'
 
         total = checkout.total()
         assert total == '1,656.00 EUR', 'Total is not shown as expected'

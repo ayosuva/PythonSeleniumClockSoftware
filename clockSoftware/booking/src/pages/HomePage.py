@@ -11,7 +11,7 @@ class HomePage:
     NIGHTS = (By.ID, 'to-place')
 
     BOOK_BTN = (By.XPATH, '//*[@id="flights"]/form/div/div[5]/input')
-    entered_date=""
+    #entered_date=""
     def __init__(self, driver):
         self.driver = driver
         self.sl = ReusableFunctions(self.driver)
@@ -24,7 +24,7 @@ class HomePage:
         self.sl.wait_and_click(self.DATE_FIELD)
 
     def click_date(self):
-        HomePage.entered_date=datetime.today().strftime('%d-%m-%Y')
+        #HomePage.entered_date=datetime.today().strftime('%d-%m-%Y')
         self.sl.wait_and_input_text(self.input_Arrival_Date,datetime.today().strftime('%d-%m-%Y'))
 
     def input_nights(self, nights=None):
